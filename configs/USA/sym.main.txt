@@ -1540,3 +1540,9 @@ gp_str_page_id_fmt = 0x8005641C;
 gp_str_pbak_name_tmpl = 0x800564C0;
 gp_wall_bitmap = 0x800564BC;
 gp_wall_cache = 0x800565DC;
+
+// Names from the psx-crash port (titles/crash1/executable.json, entry/facts.cpp) where this map had none; docs/our-names.md
+NativeFrameTransition = 0x80012510; // type:func size:0x50
+NativeBootUseCdAddress = 0x80056410;
+BlockPoolHeapTop = 0x8005C550;
+PoolNodeNodeTable = 0x8005C554;

@@ -121,12 +121,12 @@ Statuses: ✅ `re-verified` · 🟡 `re-partial` · 🔬 `in-progress` · ⬜ `t
 - notes: Resolve from game state before GTE submission, never from GTE/OT/GP0 output. `GfxUpdateMatrices` is the camera snapshot point after `CamUpdate`; `GoolObjectTransform` is the object producer seam because it still owns object identity, animation type/frame, asset, and world transform before the Svtx/Cvtx GTE paths. The call-site recovery for the projection owner is `$r31 - 8`: a `jal` links to its own address plus its delay slot plus four, and `$r31 - 4` names the delay slot (issue 0025).
 
 ### CRASH1-06 — owned widescreen and interpolation paths
-- status: todo
+- status: re-partial
 - deps: CRASH1-05
-- evidence:
-- where: not assigned
-- gap: The OFX projection owner is deleted; Record widens the canvas and keeps the retail centre, and the guest's own horizontal culls are not widened (issue 0030). History: the deleted owner published the centre through `SetGeomOffset`, the guest's centre is published through `SetGeomOffset` on every frame, and a live unpaused N. Sanity Beach level is presented on the widened 684-wide canvas — but the rule TRANSLATES the projection (`OFX + margin`, H held), so the widened canvas's added columns show the guest's own fill and not more world. Revealing them needs the title's own horizontal frustum, which is CRASH1-05's pre-GTE camera/projection state, and the HUD's screen-space overlays need their own anchoring. Interpolation still lacks an authoritative simulation tick plus owned previous/current camera and object-transform producers, and no native renderer submission owner exists to consume either result.
-- notes: Enhancements must remain off during faithful/oracle verification. The centre publication is no longer the prerequisite; the pre-GTE horizontal frustum is.
+- evidence: The horizontal culls are read (`docs/notes/screen-culls.md`): the world renderers have none (the SLST list is disc data), and the objects' is `Gfx_CalcObjectMatrices` 0x800180CC's box and centre tests. The port's head of that function widens its columns to the canvas, byte-identical to the retail routine at 4:3 in every scene the warp reaches but 0x04, and draws objects only the canvas keeps off the guest clock with logic state unchanged (psx-crash issue 0030).
+- where: psx-crash `titles/crash1/render/object_cull.*`
+- gap: The world's margins hold only what the 4:3 sort list names, so they stay partly empty; sprites, fragments and text are not read for a screen test; the intro's 4:3-wide overlay rectangle is untraced. Interpolation still lacks an authoritative simulation tick plus owned previous/current camera and object-transform producers, and no native renderer submission owner exists to consume either result.
+- notes: Enhancements must remain off during faithful/oracle verification.
 
 ## Runtime execution migration
 

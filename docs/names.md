@@ -209,7 +209,7 @@ All 365 Naughty Dog game functions in `SCUS_949.00`, ordered by VRAM address and
 | `0x800180A0` | 11w | `func_800180A0` | **`Gfx_ResetCam`** | `GfxResetCam` | `render/transform.c` | `C` | reset camera trans, rot, and scale vectors to default values |
 | `0x800180CC` | 536w | `func_800180CC` | **`Gfx_CalcObjectMatrices`** | `GfxCalcObjectMatrices` | `render/transform_8964.c` | `C` | [re]calculate matrices for an object and replace the current modelview matrix |
 | `0x8001892C` | 14w | `func_8001892C` | **`Gfx_SetGteMatrices`** | `GfxSetGteMatrices` | `render/gte.c` | `C` | Apply rotation and translation matrices via `SetRotMatrix` and `SetTransMatrix` |
-| `0x80018964` | 55w | `func_80018964` | **`Gfx_LoadWorlds`** | `GfxLoadWorlds` | `render/transform_8964.c` | `C` | load info for the current zone's worlds into the reserved area of the zone header |
+| `0x80018964` | 55w | `func_80018964` | **`Gfx_TransformSvtx`** | `GfxTransformSvtx` | `render/transform_8964.c` | `C` | transform an svtx frame and place resulting primitives into the ot; `Gfx_TransformCvtx`'s counterpart (it calls `Gte_RTransformSvtx` when `Gfx_CalcObjectMatrices` keeps the object) |
 | `0x80018A40` | 86w | `func_80018A40` | **`Gfx_TransformCvtx`** | `GfxTransformCvtx` | `render/transform_8964.c` | `C` | transform a cvtx frame and place resulting primitives into the ot |
 | `0x80018B98` | 137w | `func_80018B98` | **`Gfx_TransformFragment`** | `GfxTransformFragment` | `render/quad_draw.c` | `C` | transform a `gool_frag` and place resulting primitives into the ot |
 | `0x80018DBC` | 226w | `func_80018DBC` | **`Gfx_TransformFontChar`** | `GfxTransformFontChar` | `render/quad_draw.c` | `C` | transform a `gool_glyph` and place resulting primitives into the ot |

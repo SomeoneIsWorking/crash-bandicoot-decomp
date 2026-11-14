@@ -412,7 +412,7 @@ void Gool_ObjectTransform(GoolObj *obj) {
                 g_ot_cur[0]->ordering_table,
                 obj);
         } else {
-            Gfx_LoadWorlds(
+            Gfx_TransformSvtx(
                 Ns_Lookup(&((GoolAnimSeq *)obj->anim_seq)->eid)->items[(u32)obj->anim_frame >> 8],
                 g_ot_cur[0]->ordering_table,
                 obj);

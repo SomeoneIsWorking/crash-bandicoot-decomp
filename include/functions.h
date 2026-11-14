@@ -182,7 +182,7 @@ s32 Gfx_CalcObjectMatrices();
 void Gfx_FormatCardString();
 void Gfx_FreezeMapTextures();
 void Gfx_InitMatrices();
-void Gfx_LoadWorlds();
+void Gfx_TransformSvtx();
 void Gfx_LoadWorldsFog();
 s32 Gfx_TgeoGetTexinfoArray();
 s32 Gfx_TgeoOnLoad();

@@ -128,7 +128,7 @@ typedef struct ZoneEntry8964 {
 #undef CRASH_EXT_RENDER_TRANSFORM_8964
 
 
-void Gfx_LoadWorlds(u8 *arg0, u32 *arg1, GoolObj *arg2) {
+void Gfx_TransformSvtx(u8 *arg0, u32 *arg1, GoolObj *arg2) {
     ResourceEntry *res;
     void *data;
 

@@ -123,9 +123,9 @@ Statuses: ✅ `re-verified` · 🟡 `re-partial` · 🔬 `in-progress` · ⬜ `t
 ### CRASH1-06 — owned widescreen and interpolation paths
 - status: re-partial
 - deps: CRASH1-05
-- evidence: The horizontal culls are read (`docs/notes/screen-culls.md`): the world renderers have none (the SLST list is disc data), and the objects' is `Gfx_CalcObjectMatrices` 0x800180CC's box and centre tests. The port's head of that function widens its columns to the canvas, byte-identical to the retail routine at 4:3 in every scene the warp reaches but 0x04, and draws objects only the canvas keeps off the guest clock with logic state unchanged (psx-crash issue 0030).
-- where: psx-crash `titles/crash1/render/object_cull.*`
-- gap: The world's margins hold only what the 4:3 sort list names, so they stay partly empty; sprites, fragments and text are not read for a screen test; the intro's 4:3-wide overlay rectangle is untraced. Interpolation still lacks an authoritative simulation tick plus owned previous/current camera and object-transform producers, and no native renderer submission owner exists to consume either result.
+- evidence: The horizontal culls are read (`docs/notes/screen-culls.md`): the world renderers have none (the SLST list is disc data), and the objects' is `Gfx_CalcObjectMatrices` 0x800180CC's box and centre tests. The port's head of that function widens its columns to the canvas, byte-identical to the retail routine at 4:3 in every scene the warp reaches but 0x04, and draws objects only the canvas keeps off the guest clock with logic state unchanged (psx-crash issue 0030). SVTX and CVTX vertex frames share one layout, normals in one and colours in the other (`docs/notes/vertex-frames.md`); the port's in-betweens draw each object's frame blended between its two ticks.
+- where: psx-crash `titles/crash1/render/object_cull.*`, `titles/crash1/frame/pose_blend.*`
+- gap: The world's margins hold only what the 4:3 sort list names, so they stay partly empty; sprites, fragments and text are not read for a screen test; the intro's 4:3-wide overlay rectangle is untraced.
 - notes: Enhancements must remain off during faithful/oracle verification.
 
 ## Runtime execution migration
